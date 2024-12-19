@@ -91,6 +91,7 @@ class _HorizontalLayoutState extends State<HorizontalLayout> {
     idCardController.clear();
   }
 
+  @override
   void dispose() {
     firstNameController.dispose();
     lastNameController.dispose();

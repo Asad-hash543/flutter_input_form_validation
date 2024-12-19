@@ -92,6 +92,7 @@ class _VerticalLayoutState extends State<VerticalLayout> {
     idCardController.clear();
   }
 
+  @override
   void dispose() {
     firstNameController.dispose();
     lastNameController.dispose();
