@@ -13,30 +13,34 @@ class Password extends StatelessWidget {
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
     // final double height = MediaQuery.of(context).size.width;
-    return Expanded(
-      child: CustomTextFormField(
-        labelText: 'Password',
-        labelStyle: TextStyle(
-          fontSize: width * 0.012,
+    return Row(
+      children: [
+        Expanded(
+          child: CustomTextFormField(
+            labelText: 'Password',
+            labelStyle: TextStyle(
+              fontSize: width * 0.012,
+            ),
+            controller: controller,
+            focusNode: focusNode,
+        
+            suffixIcon: const Icon(Icons.password_rounded),
+            keyBoardInputType: TextInputType.text,
+            obscureText: true,
+            obscurrCharacter: '*',
+            validator: (value) {
+              if (value.isEmptyTextField(value)) {
+                return 'Please Enter Password ';
+              }
+              if (!(value.isValidPassword())) {
+                controller.clear();
+                return 'Invalid Password';
+              }
+              return null;
+            },
+          ),
         ),
-        controller: controller,
-        focusNode: focusNode,
-
-        suffixIcon: const Icon(Icons.password_rounded),
-        keyBoardInputType: TextInputType.text,
-        obscureText: true,
-        obscurrCharacter: '*',
-        validator: (value) {
-          if (value.isEmptyTextField(value)) {
-            return 'Please Enter Password ';
-          }
-          if (!(value.isValidPassword())) {
-            controller.clear();
-            return 'Invalid Password';
-          }
-          return null;
-        },
-      ),
+      ],
     );
   }
 }

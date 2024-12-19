@@ -15,23 +15,27 @@ class CustomElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
     final double height = MediaQuery.of(context).size.height;
-    return Expanded(
-      child: Align(
-        alignment: Alignment.center,
-        child: ElevatedButton(
-          focusNode: focusNode,
-          style: ElevatedButton.styleFrom(
-            backgroundColor: color,
-            maximumSize: Size(width * 0.4, height * 0.1),
-            minimumSize: Size(width * 0.05, height * 0.07),
-          ),
-          onPressed: onPressed,
-          child: Text(
-            text,
-            style: TextStyle(fontSize: width * 0.012, color: Colors.white),
+    return Row(
+      children: [
+        Expanded(
+          child: Align(
+            alignment: Alignment.center,
+            child: ElevatedButton(
+              focusNode: focusNode,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: color,
+                maximumSize: Size(width * 0.4, height * 0.1),
+                minimumSize: Size(width * 0.05, height * 0.07),
+              ),
+              onPressed: onPressed,
+              child: Text(
+                text,
+                style: TextStyle(fontSize: width * 0.012, color: Colors.white),
+              ),
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 }

@@ -24,29 +24,33 @@ class Date extends StatelessWidget {
           return KeyEventResult.ignored;
         }
       },
-      child: Expanded(
-        child: CustomTextFormField(
-          // autoFacus: true,
-          labelText: 'Date',
-          labelStyle: TextStyle(
-            fontSize: width * 0.012,
+      child: Row(
+        children: [
+          Expanded(
+            child: CustomTextFormField(
+              // autoFacus: true,
+              labelText: 'Date',
+              labelStyle: TextStyle(
+                fontSize: width * 0.012,
+              ),
+              controller: controller,
+              focusNode: focusNode,
+              suffixIcon: const Icon(Icons.date_range_outlined),
+              keyBoardInputType: TextInputType.datetime,
+          
+              validator: (value) {
+                if (value.isEmptyTextField(value)) {
+                return 'Please Enter Date ';
+              }
+                if (!(value.isValidDate(value))) {
+                  controller.clear();
+                  return ' DD-MM-YYYY';
+                }
+                return null;
+              },
+            ),
           ),
-          controller: controller,
-          focusNode: focusNode,
-          suffixIcon: const Icon(Icons.date_range_outlined),
-          keyBoardInputType: TextInputType.datetime,
-
-          validator: (value) {
-            if (value.isEmptyTextField(value)) {
-            return 'Please Enter Date ';
-          }
-            if (!(value.isValidDate(value))) {
-              controller.clear();
-              return ' DD-MM-YYYY';
-            }
-            return null;
-          },
-        ),
+        ],
       ),
     );
   }

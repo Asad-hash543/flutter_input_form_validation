@@ -12,28 +12,32 @@ class Email extends StatelessWidget {
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
     // final double height = MediaQuery.of(context).size.width;
-    return Expanded(
-      child: CustomTextFormField(
-        // autoFacus: true,
-        labelText: 'Email',
-        labelStyle: TextStyle(
-          fontSize: width * 0.012,
+    return Row(
+      children: [
+        Expanded(
+          child: CustomTextFormField(
+            // autoFacus: true,
+            labelText: 'Email',
+            labelStyle: TextStyle(
+              fontSize: width * 0.012,
+            ),
+            controller: controller,
+            focusNode:focusNode,
+            suffixIcon: const Icon(Icons.email_outlined),
+            keyBoardInputType: TextInputType.emailAddress,
+            validator: (value) {
+              if (value.isEmptyTextField(value)) {
+                return 'Please Enter Email ';
+              }
+              if (!(value.isValidEmail()) ) {
+                controller.clear();
+                return 'Please Enter Valid Email';
+              }
+              return null;
+            },
+          ),
         ),
-        controller: controller,
-        focusNode:focusNode,
-        suffixIcon: const Icon(Icons.email_outlined),
-        keyBoardInputType: TextInputType.emailAddress,
-        validator: (value) {
-          if (value.isEmptyTextField(value)) {
-            return 'Please Enter Email ';
-          }
-          if (!(value.isValidEmail()) ) {
-            controller.clear();
-            return 'Please Enter Valid Email';
-          }
-          return null;
-        },
-      ),
+      ],
     );
   }
 }

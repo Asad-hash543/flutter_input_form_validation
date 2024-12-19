@@ -9,15 +9,19 @@ class HeadText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final double width = MediaQuery.of(context).size.width;
-    return Expanded(
-      child: FittedBox(
-        fit: BoxFit.scaleDown,
-        child: Text(
-          text,
-          style: TextStyle(
-              fontSize: fontSize, color: color, fontWeight: FontWeight.w700),
+    return Row(
+      children: [
+        Expanded(
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              text,
+              style: TextStyle(
+                  fontSize: fontSize, color: color, fontWeight: FontWeight.w700),
+            ),
+          ),
         ),
-      ),
+      ],
     );
   }
 }

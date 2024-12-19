@@ -112,229 +112,233 @@ class _VerticalLayoutState extends State<VerticalLayout> {
   @override
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
-    return Center(
-        child: Padding(
-          padding: EdgeInsets.all(width * 0.01),
-          child: Expanded(
-            child: Container(
-              width: width * 0.3,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(width * 0.01)),
-              child: Form(
-                key: _key,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      flex: 3,
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: HeadText(
-                          text: 'Get Your Choice!',
-                          fontSize: width * 0.015,
+    return Column(
+      children: [
+        Expanded(
+          child: Center(
+            child: Padding(
+                padding: EdgeInsets.all(width * 0.01),
+                child: Container(
+                  width: width * 0.3,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(width * 0.01)),
+                  child: Form(
+                    key: _key,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          flex: 3,
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: HeadText(
+                              text: 'Get Your Choice!',
+                              fontSize: width * 0.015,
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 2,
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                            left: width * 0.006, right: width * 0.006),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Expanded(
-                              flex: 1,
-                              child: FirstName(
-                                controller: firstNameController,
-                                focusNode: _firstNameFocusNode,
-                              ),
+                        Expanded(
+                          flex: 2,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                left: width * 0.006, right: width * 0.006),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Expanded(
+                                  flex: 1,
+                                  child: FirstName(
+                                    controller: firstNameController,
+                                    focusNode: _firstNameFocusNode,
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 1,
+                                  child: Padding(
+                                      padding: EdgeInsets.only(left: width * 0.007),
+                                      child: LastName(
+                                        controller: lastNameController,
+                                        focusNode: _lastNameFocusNode,
+                                      )),
+                                ),
+                              ],
                             ),
-                            Expanded(
-                              flex: 1,
-                              child: Padding(
-                                  padding: EdgeInsets.only(left: width * 0.007),
-                                  child: LastName(
-                                    controller: lastNameController,
-                                    focusNode: _lastNameFocusNode,
-                                  )),
-                            ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 2,
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                            left: width * 0.006, right: width * 0.006),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Expanded(
-                                flex: 1,
-                                child: PhoneNumber(
-                                  controller: phoneController,
-                                  focusNode: _phoneFocusNode,
-                                )),
-                            Expanded(
-                              flex: 1,
-                              child: Padding(
-                                  padding: EdgeInsets.only(left: width * 0.007),
-                                  child: Location(
-                                    controller: locationController,
-                                    focusNode: _locationFocusNode,
-                                  )),
+                        Expanded(
+                          flex: 2,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                left: width * 0.006, right: width * 0.006),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Expanded(
+                                    flex: 1,
+                                    child: PhoneNumber(
+                                      controller: phoneController,
+                                      focusNode: _phoneFocusNode,
+                                    )),
+                                Expanded(
+                                  flex: 1,
+                                  child: Padding(
+                                      padding: EdgeInsets.only(left: width * 0.007),
+                                      child: Location(
+                                        controller: locationController,
+                                        focusNode: _locationFocusNode,
+                                      )),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 2,
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                            left: width * 0.006, right: width * 0.006),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Expanded(
-                                flex: 1,
-                                child: ShirtSize(
-                                  controller: shirtSizeController,
-                                  focusNode: _shirtSizeFocusNode,
-                                )),
-                            Expanded(
-                              flex: 1,
-                              child: Padding(
-                                  padding: EdgeInsets.only(left: width * 0.007),
-                                  child: CardDetails(
-                                    controller: cardDetailsController,
-                                    focusNode: _cardDetailsFocusNode,
-                                  )),
+                        Expanded(
+                          flex: 2,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                left: width * 0.006, right: width * 0.006),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Expanded(
+                                    flex: 1,
+                                    child: ShirtSize(
+                                      controller: shirtSizeController,
+                                      focusNode: _shirtSizeFocusNode,
+                                    )),
+                                Expanded(
+                                  flex: 1,
+                                  child: Padding(
+                                      padding: EdgeInsets.only(left: width * 0.007),
+                                      child: CardDetails(
+                                        controller: cardDetailsController,
+                                        focusNode: _cardDetailsFocusNode,
+                                      )),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 2,
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                            left: width * 0.006, right: width * 0.006),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Expanded(
-                                flex: 1,
-                                child: DeliveryTime(
-                                  controller: delievryController,
-                                  focusNode: _delievryFocusNode,
-                                )),
-                            Expanded(
-                              flex: 1,
-                              child: Padding(
-                                  padding: EdgeInsets.only(left: width * 0.007),
-                                  child: Payment(
-                                    controller: paymentMethodController,
-                                    focusNode: _paymentmethodFocusNode,
-                                  )),
+                        Expanded(
+                          flex: 2,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                left: width * 0.006, right: width * 0.006),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Expanded(
+                                    flex: 1,
+                                    child: DeliveryTime(
+                                      controller: delievryController,
+                                      focusNode: _delievryFocusNode,
+                                    )),
+                                Expanded(
+                                  flex: 1,
+                                  child: Padding(
+                                      padding: EdgeInsets.only(left: width * 0.007),
+                                      child: Payment(
+                                        controller: paymentMethodController,
+                                        focusNode: _paymentmethodFocusNode,
+                                      )),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 2,
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                            left: width * 0.006, right: width * 0.006),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Expanded(
-                                flex: 1,
-                                child: Email(
-                                  controller: emailController,
-                                  focusNode: _emailFocusNode,
-                                )),
-                            Expanded(
-                              flex: 1,
-                              child: Padding(
-                                  padding: EdgeInsets.only(left: width * 0.007),
-                                  child: Password(
-                                    controller: passwordController,
-                                    focusNode: _passwordFocusNode,
-                                  )),
+                        Expanded(
+                          flex: 2,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                left: width * 0.006, right: width * 0.006),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Expanded(
+                                    flex: 1,
+                                    child: Email(
+                                      controller: emailController,
+                                      focusNode: _emailFocusNode,
+                                    )),
+                                Expanded(
+                                  flex: 1,
+                                  child: Padding(
+                                      padding: EdgeInsets.only(left: width * 0.007),
+                                      child: Password(
+                                        controller: passwordController,
+                                        focusNode: _passwordFocusNode,
+                                      )),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 2,
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                            left: width * 0.006, right: width * 0.006),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Expanded(
-                                flex: 1,
-                                child: Date(
-                                  controller: dateController,
-                                  focusNode: _dateFocusNode,
-                                )),
-                            Expanded(
-                              flex: 1,
-                              child: Padding(
-                                  padding: EdgeInsets.only(left: width * 0.007),
-                                  child: IdCard(
-                                    controller: idCardController,
-                                    focusNode: _idCardFocusNode,
-                                  )),
+                        Expanded(
+                          flex: 2,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                left: width * 0.006, right: width * 0.006),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Expanded(
+                                    flex: 1,
+                                    child: Date(
+                                      controller: dateController,
+                                      focusNode: _dateFocusNode,
+                                    )),
+                                Expanded(
+                                  flex: 1,
+                                  child: Padding(
+                                      padding: EdgeInsets.only(left: width * 0.007),
+                                      child: IdCard(
+                                        controller: idCardController,
+                                        focusNode: _idCardFocusNode,
+                                      )),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 2,
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                            left: width * 0.006, right: width * 0.006),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Expanded(
-                              flex: 1,
-                              child: CustomElevatedButton(
-                                  color: const Color.fromARGB(255, 37, 185, 14),
-                                  focusNode: _submitButtonFocusNode,
-                                  onPressed: () {
-                                    _key.currentState?.validate();
-                                  },
-                                  text: 'Submit'),
+                        Expanded(
+                          flex: 2,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                left: width * 0.006, right: width * 0.006),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Expanded(
+                                  flex: 1,
+                                  child: CustomElevatedButton(
+                                      color: const Color.fromARGB(255, 37, 185, 14),
+                                      focusNode: _submitButtonFocusNode,
+                                      onPressed: () {
+                                        _key.currentState?.validate();
+                                      },
+                                      text: 'Submit'),
+                                ),
+                                Expanded(
+                                  flex: 1,
+                                  child: CustomElevatedButton(
+                                      color: const Color.fromARGB(255, 207, 16, 16),
+                                      focusNode: _clearButtonFocusNode,
+                                      onPressed: _isClear,
+                                      text: 'Clear'),
+                                ),
+                              ],
                             ),
-                            Expanded(
-                              flex: 1,
-                              child: CustomElevatedButton(
-                                  color: const Color.fromARGB(255, 207, 16, 16),
-                                  focusNode: _clearButtonFocusNode,
-                                  onPressed: _isClear,
-                                  text: 'Clear'),
-                            ),
-                          ],
+                          ),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ),
-            ),
           ),
         ),
-      );
+      ],
+    );
   }
 }
