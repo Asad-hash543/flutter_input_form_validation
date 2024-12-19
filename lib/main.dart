@@ -37,8 +37,8 @@ class _MyHomePageState extends State<MyHomePage> {
       backgroundColor: const Color.fromARGB(255, 218, 11, 152),
       body: OrientationBuilder(builder: (context, orientation) {
         return orientation == Orientation.portrait
-            ? VerticalLayout()
-            : HorizontalLayout();
+            ?const VerticalLayout()
+            :const HorizontalLayout();
       }),
     );
   }

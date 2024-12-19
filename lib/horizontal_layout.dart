@@ -14,37 +14,66 @@ import 'package:flutter_input_form_validation/phone_number.dart';
 import 'package:flutter_input_form_validation/shirt_size.dart';
 import 'package:flutter_input_form_validation/text.dart';
 
-class HorizontalLayout extends StatelessWidget {
-   HorizontalLayout({super.key});
+class HorizontalLayout extends StatefulWidget {
+  const HorizontalLayout({super.key});
 
+  @override
+  State<HorizontalLayout> createState() => _HorizontalLayoutState();
+}
+
+class _HorizontalLayoutState extends State<HorizontalLayout> {
   final  GlobalKey<FormState> _key = GlobalKey<FormState>();
 
   final TextEditingController firstNameController = TextEditingController();
+
   final TextEditingController lastNameController = TextEditingController();
+
   final TextEditingController phoneController = TextEditingController();
+
   final TextEditingController locationController = TextEditingController();
+
   final TextEditingController shirtSizeController = TextEditingController();
+
   final TextEditingController cardDetailsController = TextEditingController();
+
   final TextEditingController delievryController = TextEditingController();
+
   final TextEditingController paymentMethodController = TextEditingController();
+
   final TextEditingController emailController = TextEditingController();
+
   final TextEditingController passwordController = TextEditingController();
+
   final TextEditingController dateController = TextEditingController();
+
   final TextEditingController idCardController = TextEditingController();
 
   final FocusNode _firstNameFocusNode = FocusNode();
+
   final FocusNode _lastNameFocusNode = FocusNode();
+
   final FocusNode _phoneFocusNode = FocusNode();
+
   final FocusNode _locationFocusNode = FocusNode();
+
   final FocusNode _shirtSizeFocusNode = FocusNode();
+
   final FocusNode _cardDetailsFocusNode = FocusNode();
+
   final FocusNode _delievryFocusNode = FocusNode();
+
   final FocusNode _paymentmethodFocusNode = FocusNode();
+
   final FocusNode _emailFocusNode = FocusNode();
+
   final FocusNode _passwordFocusNode = FocusNode();
+
   final FocusNode _dateFocusNode = FocusNode();
+
   final FocusNode _idCardFocusNode = FocusNode();
+
   final FocusNode _submitButtonFocusNode = FocusNode();
+
   final FocusNode _clearButtonFocusNode = FocusNode();
 
   void _isClear() {
@@ -75,7 +104,7 @@ class HorizontalLayout extends StatelessWidget {
     passwordController.dispose();
     dateController.dispose();
     idCardController.dispose();
-    // super.dispose();
+    super.dispose();
   }
 
   @override
