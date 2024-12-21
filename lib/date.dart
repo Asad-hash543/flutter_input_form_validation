@@ -18,7 +18,10 @@ class Date extends StatelessWidget {
         if (!(event.logicalKey.keyId >= 48 &&
                 event.logicalKey.keyId <= LogicalKeyboardKey.digit9.keyId ||
             event.logicalKey.keyId == 47 ||
-            event.logicalKey.keyId == LogicalKeyboardKey.backspace.keyId)) {
+            event.logicalKey.keyId == LogicalKeyboardKey.backspace.keyId ||
+            event.logicalKey.keyId == LogicalKeyboardKey.arrowLeft.keyId ||
+            event.logicalKey.keyId == LogicalKeyboardKey.arrowRight.keyId ||
+            event.logicalKey.keyId == LogicalKeyboardKey.space.keyId)) {
           return KeyEventResult.handled;
         } else {
           return KeyEventResult.ignored;
@@ -37,13 +40,13 @@ class Date extends StatelessWidget {
               focusNode: focusNode,
               suffixIcon: const Icon(Icons.date_range_outlined),
               keyBoardInputType: TextInputType.datetime,
-          
+
               validator: (value) {
-                if (value.isEmptyTextField(value)) {
-                return 'Please Enter Date ';
-              }
+                if (value == null || value.isEmpty) {
+                  return 'Please Enter Date ';
+                }
                 if (!(value.isValidDate(value))) {
-                  controller.clear();
+                  // controller.clear();
                   return ' DD-MM-YYYY';
                 }
                 return null;

@@ -19,11 +19,17 @@ class ShirtSize extends StatelessWidget {
         Expanded(
           child: Focus(
             onKeyEvent: (node, event) {
-              if (!(event.logicalKey.keyId >= 97 && event.logicalKey.keyId <= 122 ||
-                  event.logicalKey.keyId >= 65 && event.logicalKey.keyId <= 90 ||
-                  event.logicalKey.keyId == LogicalKeyboardKey.backspace.keyId ||
-                  event.logicalKey.keyId == LogicalKeyboardKey.space.keyId 
-                  )) {
+              if (!(event.logicalKey.keyId >= 97 &&
+                      event.logicalKey.keyId <= 122 ||
+                  event.logicalKey.keyId >= 65 &&
+                      event.logicalKey.keyId <= 90 ||
+                  event.logicalKey.keyId ==
+                      LogicalKeyboardKey.backspace.keyId ||
+                  event.logicalKey.keyId == LogicalKeyboardKey.space.keyId ||
+                  event.logicalKey.keyId ==
+                      LogicalKeyboardKey.arrowLeft.keyId ||
+                  event.logicalKey.keyId ==
+                      LogicalKeyboardKey.arrowRight.keyId)) {
                 return KeyEventResult.handled;
               } else {
                 return KeyEventResult.ignored;
@@ -39,9 +45,10 @@ class ShirtSize extends StatelessWidget {
               focusNode: focusNode,
               suffixIcon: const Icon(Icons.height),
               validator: (value) {
-                if ((value.isEmptyTextField(value))) {
-                  // controller.clear();
-                  return 'Please Enter Size e.g XL,L';
+                if (value == null || value.isEmpty) {
+                  return 'Please Enter Size';
+                }if (!(value.isShirtSize())) {
+                  return 'Invalid Size e.g XL,L';
                 }
                 return null;
               },

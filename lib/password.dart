@@ -16,30 +16,30 @@ class Password extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: CustomTextFormField(
-            labelText: 'Password',
-            labelStyle: TextStyle(
-              fontSize: width * 0.012,
+            child: CustomTextFormField(
+              labelText: 'Password',
+              labelStyle: TextStyle(
+                fontSize: width * 0.012,
+              ),
+              controller: controller,
+              focusNode: focusNode,
+              suffixIcon: const Icon(Icons.password_rounded),
+              keyBoardInputType: TextInputType.text,
+              // obscureText: true,
+              obscurrCharacter: '*',
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please Enter Password ';
+                }
+                if (!(value.isValidPassword())) {
+                  // controller.clear();
+                  return 'lowerCase,UperCase & digit';
+                }
+                return null;
+              },
             ),
-            controller: controller,
-            focusNode: focusNode,
-        
-            suffixIcon: const Icon(Icons.password_rounded),
-            keyBoardInputType: TextInputType.text,
-            obscureText: true,
-            obscurrCharacter: '*',
-            validator: (value) {
-              if (value.isEmptyTextField(value)) {
-                return 'Please Enter Password ';
-              }
-              if (!(value.isValidPassword())) {
-                controller.clear();
-                return 'Invalid Password';
-              }
-              return null;
-            },
           ),
-        ),
+      
       ],
     );
   }

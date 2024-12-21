@@ -20,9 +20,15 @@ class PhoneNumber extends StatelessWidget {
           child: Focus(
             onKeyEvent: (node, event) {
               if (!(event.logicalKey.keyId >= LogicalKeyboardKey.digit0.keyId &&
-                      event.logicalKey.keyId <= LogicalKeyboardKey.digit9.keyId ||
-                  event.logicalKey.keyId == LogicalKeyboardKey.backspace.keyId||
-                  event.logicalKey.keyId == LogicalKeyboardKey.space.keyId)) {
+                      event.logicalKey.keyId <=
+                          LogicalKeyboardKey.digit9.keyId ||
+                  event.logicalKey.keyId ==
+                      LogicalKeyboardKey.backspace.keyId ||
+                  event.logicalKey.keyId == LogicalKeyboardKey.space.keyId ||
+                  event.logicalKey.keyId ==
+                      LogicalKeyboardKey.arrowLeft.keyId ||
+                  event.logicalKey.keyId ==
+                      LogicalKeyboardKey.arrowRight.keyId)) {
                 return KeyEventResult.handled;
               } else {
                 return KeyEventResult.ignored;
@@ -38,12 +44,12 @@ class PhoneNumber extends StatelessWidget {
               focusNode: focusNode,
               suffixIcon: const Icon(Icons.phone_enabled),
               validator: (value) {
-                if (value.isEmptyTextField(value)) {
+                if (value == null || value.isEmpty) {
                   return 'Please Enter Phone Number ';
                 }
                 if (!(value.isPhoneNumber())) {
-                  controller.clear();
-                  return "Invalid Phone Number";
+                  // controller.clear();
+                  return "Invalid! Enter 11 digits";
                 }
                 return null;
               },

@@ -32,15 +32,16 @@ extension StringValidation on String? {
   bool _hasValidLocalPart() {
     // Ensures local part (before @) meets additional criteria
     if (this == null) return false;
-    
+
     // Split email into local part and domain
     final parts = this!.split('@');
     if (parts.length != 2) return false;
-    
+
     final localPart = parts[0];
-    
+
     // Check local part length
-    return localPart.isNotEmpty && localPart.length <= 64 &&
+    return localPart.isNotEmpty &&
+        localPart.length <= 64 &&
         // Prevent consecutive dots
         !localPart.contains('..') &&
         // Prevent starting or ending with a dot
@@ -51,14 +52,15 @@ extension StringValidation on String? {
   bool _hasValidDomain() {
     // Ensures domain meets additional criteria
     if (this == null) return false;
-    
+
     final parts = this!.split('@');
     if (parts.length != 2) return false;
-    
+
     final domain = parts[1];
-    
+
     // Check domain length and structure
-    return domain.length >= 3 && domain.length <= 255 &&
+    return domain.length >= 3 &&
+        domain.length <= 255 &&
         domain.contains('.') &&
         // Prevent consecutive dots in domain
         !domain.contains('..') &&
@@ -79,6 +81,17 @@ extension StringValidation on String? {
     return false;
   }
 
+  bool isShirtSize() {
+    return hasUppercaseLetters() && this!.length <= 2;
+  }
+
+  bool hasUppercaseLetters() {
+    return this?.codeUnits.every(
+              (element) => element >= 65 && element <= 90,
+            ) ??
+        false;
+  }
+
   ///Password
 
   bool isValidPassword() {
@@ -86,14 +99,9 @@ extension StringValidation on String? {
   }
 
   bool isPasswordFormat() {
-    return this?.codeUnits.every((element) =>
-            element >= 97 && element <= 122 ||
-            element >= 48 && element <= 57 ||
-            element >= 65 && element <= 90 
-            ) ??
-        false;
+    final regExp = RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$');
+    return regExp.hasMatch(this ?? '');
   }
-  
 
   ///Id card
 
@@ -118,13 +126,11 @@ extension StringValidation on String? {
 
   //Payment
   bool isValidPaymentFormat() {
-    return isDigitFormat() && this!.length <= 6;
+    return isPaymentRegExp();
   }
 
-  bool isDigitFormat() {
-    return this?.codeUnits.every(
-              (element) => element >= 48 && element <= 57,
-            ) ??
-        false;
+  bool isPaymentRegExp() {
+    RegExp regExp = RegExp(r'^\d+\.\d+$');
+    return regExp.hasMatch(this ?? '');
   }
 }

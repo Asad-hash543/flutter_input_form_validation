@@ -22,15 +22,15 @@ class Email extends StatelessWidget {
               fontSize: width * 0.012,
             ),
             controller: controller,
-            focusNode:focusNode,
+            focusNode: focusNode,
             suffixIcon: const Icon(Icons.email_outlined),
             keyBoardInputType: TextInputType.emailAddress,
             validator: (value) {
-              if (value.isEmptyTextField(value)) {
+              if (value == null || value.isEmpty) {
                 return 'Please Enter Email ';
               }
-              if (!(value.isValidEmail()) ) {
-                controller.clear();
+              if (!(value.isValidEmail())) {
+                // controller.clear();
                 return 'Please Enter Valid Email';
               }
               return null;

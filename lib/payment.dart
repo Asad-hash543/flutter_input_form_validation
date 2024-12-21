@@ -19,9 +19,16 @@ class Payment extends StatelessWidget {
           child: Focus(
             onKeyEvent: (node, event) {
               if (!(event.logicalKey.keyId >= LogicalKeyboardKey.digit0.keyId &&
-                      event.logicalKey.keyId <= LogicalKeyboardKey.digit9.keyId ||
-                  event.logicalKey.keyId == LogicalKeyboardKey.backspace.keyId||
-                  event.logicalKey.keyId == LogicalKeyboardKey.space.keyId)) {
+                      event.logicalKey.keyId <=
+                          LogicalKeyboardKey.digit9.keyId ||
+                  event.logicalKey.keyId ==
+                      LogicalKeyboardKey.backspace.keyId ||
+                  event.logicalKey.keyId == LogicalKeyboardKey.space.keyId ||
+                  event.logicalKey.keyId ==
+                      LogicalKeyboardKey.arrowLeft.keyId ||
+                  event.logicalKey.keyId ==
+                      LogicalKeyboardKey.arrowRight.keyId||
+                  event.logicalKey.keyId == 46)) {
                 return KeyEventResult.handled;
               } else {
                 return KeyEventResult.ignored;
@@ -38,12 +45,12 @@ class Payment extends StatelessWidget {
               suffixIcon: const Icon(Icons.monetization_on_sharp),
               keyBoardInputType: TextInputType.number,
               validator: (value) {
-                if (value.isEmptyTextField(value)) {
-                return 'Please Enter Amount ';
-              }
+                if (value == null || value.isEmpty) {
+                  return 'Please Enter Amount ';
+                }
                 if ((!(value.isValidPaymentFormat()))) {
-                  controller.clear();
-                  return 'Only Lacs';
+                  // controller.clear();
+                  return '00.00';
                 }
                 return null;
               },

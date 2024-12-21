@@ -18,9 +18,16 @@ class IdCard extends StatelessWidget {
         Expanded(
           child: Focus(
             onKeyEvent: (node, event) {
-              if (!(event.logicalKey.keyId >= 48 && event.logicalKey.keyId <= 57 ||
+              if (!(event.logicalKey.keyId >= 48 &&
+                      event.logicalKey.keyId <= 57 ||
                   event.logicalKey.keyId == 45 ||
-                  event.logicalKey.keyId == LogicalKeyboardKey.backspace.keyId)) {
+                  event.logicalKey.keyId ==
+                      LogicalKeyboardKey.backspace.keyId ||
+                  event.logicalKey.keyId ==
+                      LogicalKeyboardKey.arrowLeft.keyId ||
+                  event.logicalKey.keyId ==
+                      LogicalKeyboardKey.arrowRight.keyId ||
+                  event.logicalKey.keyId == LogicalKeyboardKey.space.keyId)) {
                 return KeyEventResult.handled;
               } else {
                 return KeyEventResult.ignored;
@@ -37,12 +44,12 @@ class IdCard extends StatelessWidget {
               suffixIcon: const Icon(Icons.person),
               keyBoardInputType: TextInputType.number,
               validator: (value) {
-                if (value.isEmptyTextField(value)) {
-                return 'Please Enter CNIC ';
-              }
+                if (value == null || value.isEmpty) {
+                  return 'Please Enter CNIC ';
+                }
                 if (!(value.isValidIdCard())) {
-                  controller.clear();
-                  return 'e.g 32103- must be 13 char';
+                  // controller.clear();
+                  return 'e.g XXXXX-XXXXXXX-X';
                 }
                 return null;
               },

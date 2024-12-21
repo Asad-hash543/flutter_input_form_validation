@@ -11,6 +11,7 @@ class CustomTextFormField extends StatelessWidget {
   final String obscurrCharacter;
   final TextInputType? keyBoardInputType;
   final bool autoFacus;
+  final void Function(String)? onChanged;
   const CustomTextFormField(
       {super.key,
       this.controller,
@@ -22,6 +23,7 @@ class CustomTextFormField extends StatelessWidget {
       this.labelStyle,
       this.obscureText = false,
       this.keyBoardInputType,
+      this.onChanged,
       this.obscurrCharacter = '.'});
   @override
   Widget build(BuildContext context) {
@@ -34,6 +36,7 @@ class CustomTextFormField extends StatelessWidget {
             width: width * 0.08,
             // height: height * 0.09,
             child: TextFormField(
+              onChanged: onChanged ,
               controller: controller,
               focusNode: focusNode,
               validator: validator,
